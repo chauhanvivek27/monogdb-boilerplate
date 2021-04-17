@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-var rootRouter = require('./routes');
+const rootRouter = require('./routes');
 
 // routes
 app.use('/', rootRouter);
