@@ -1,11 +1,21 @@
 const app = require('./app');
 const http = require('http');
+const morgan = require('morgan');
 const config = require('./config');
+const logger  = require('./helpers/logger');
+ 
+app.use(morgan('combined'));
 
-const port = process.env.PORT;
- 
-const server = http.createServer(app);
- 
-app.listen(port, function () {
-    console.log(`Server start runing on ${port}`);
+app.listen(config.APP.PORT, function () {
+    logger.info(`Starting Server on  port ${config.APP.PORT}`);
 });
+
+process.on('uncaughtException', (error) => {
+    logger.error(`Uncaught Exception: ${500} - ${error.message}, Stack: ${error.stack}`);
+    process.exit(1);
+  });
+  
+  process.on('SIGINT', () => {
+    logger.info(' Alright! Bye bye!');
+    process.exit();
+  });
