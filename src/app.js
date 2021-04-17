@@ -1,8 +1,5 @@
 const express = require('express');
 const app = express();
-const rootRouter = require('./routes');
+require('./routes')(app);
 
-// routes
-app.use('/', rootRouter);
- 
 module.exports = app;
