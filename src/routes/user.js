@@ -1,9 +1,8 @@
-const express = require('express')
-let router = express.Router();
-
+const user = require('../api/user');
 module.exports = function(app){
-    app.get('/user', function (req, res) {
-        res.send('User Dashboard Page');
+    app.get('/user', async function (req, res) {
+        const post = await user();
+        res.send(post);
     });
 
     app.get('/info', (req, res) => res.send('User Info'));
