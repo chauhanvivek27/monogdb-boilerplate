@@ -3,8 +3,12 @@ const http = require('http');
 const morgan = require('morgan');
 const config = require('./config');
 const logger  = require('./helpers/logger');
+const handleErrors = require('./middleware/handleerror');
+
  
 app.use(morgan('combined'));
+
+app.use(handleErrors);
 
 app.listen(config.APP.PORT, function () {
     logger.info(`Starting Server on  port ${config.APP.PORT}`);

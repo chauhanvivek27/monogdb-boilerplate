@@ -6,6 +6,11 @@ const opts = {
 };
 const postURL = process.env.POST_URL;
 module.exports = async () => {
-    const data = await fetch(postURL, opts);
-    return data;
+    try {
+        const data = await fetch(postURL, opts);
+        return data;
+    }
+    catch (err) {
+        throw  err;
+    }
 } 

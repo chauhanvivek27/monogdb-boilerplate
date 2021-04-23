@@ -16,6 +16,8 @@ module.exports = async (url, opts) => {
     logger.info(`Response from URL ${url} received in ${responseTime} ms`, LOG_SERVICE_RESPONSE_BODY && response || '');
     //res.setHeader('Content-Type', 'application/json')
     return res.json();
+  }).catch(err => {
+    throw err
   });
 
   return response;
