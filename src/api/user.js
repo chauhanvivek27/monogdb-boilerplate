@@ -4,7 +4,7 @@ const config = require('../config');
 const opts = {
     method: 'GET'
 };
-const postURL = process.env.POST_URL;
+const postURL = config.POST_URL;
 module.exports = async () => {
     try {
         const data = await fetch(postURL, opts);
