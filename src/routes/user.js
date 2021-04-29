@@ -7,6 +7,7 @@ module.exports = function (app) {
             res.send(success('reterive post successfully', post));
         }
         catch (err) {
+            error('post reterive failed', res);
             next(err);
         }
     });

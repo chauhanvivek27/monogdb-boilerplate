@@ -4,14 +4,16 @@ const morgan = require('morgan');
 const config = require('./config');
 const logger  = require('./helpers/logger');
 const handleErrors = require('./middleware/handleerror');
+const { connect } = require('./connection');
 
  
 app.use(morgan('combined'));
 
 app.use(handleErrors);
 
-app.listen(config.APP.PORT, function () {
-    logger.info(`Starting Server on  port ${config.APP.PORT}`);
+app.listen(config.APP.PORT, async () => {
+     await connect();
+     logger.info(`Starting Server on  port ${config.APP.PORT}`);
 });
 
 process.on('uncaughtException', (error) => {
