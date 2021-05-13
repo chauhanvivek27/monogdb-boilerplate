@@ -22,7 +22,8 @@ const loadEnvVariable = (envName) => {
       URL: loadEnvVariable('NODE_ENV'),
     },
     POST_URL: loadEnvVariable('POST_URL'),
-    DB_URI: loadEnvVariable('DB_URI')
+    DB_URI: loadEnvVariable('DB_URI'),
+    COLLECTION: loadEnvVariable('DB_COLLECTION')
   };
   
   module.exports = config;

@@ -1,16 +1,29 @@
-const fetch = require('../util/fetch');
-const config = require('../config');
+const { get } = require('../connection');
 
-const opts = {
-    method: 'GET'
-};
-const postURL = config.POST_URL;
-module.exports = async () => {
+
+
+const saveBook = async (book) => {
     try {
-        const data = await fetch(postURL, opts);
+        const db = await get();
+        const data = await db.insertOne(book);
+        return data && data.insertedId;
+    }
+    catch (err) {
+        throw  err;
+    }
+} 
+const findAllBooks = async () => {
+    try {
+        const db = await get();
+        const data = await db.find().toArray();
         return data;
     }
     catch (err) {
         throw  err;
     }
 } 
+
+module.exports = {
+    saveBook,
+    findAllBooks
+}

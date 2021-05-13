@@ -5,7 +5,7 @@ const { connect } = require('./connection');
 
  
 app.listen(config.APP.PORT, async () => {
-     await connect();
+     app.locals.db = await connect();
      logger.info(`Starting Server on  port ${config.APP.PORT}`);
 });
 

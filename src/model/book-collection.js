@@ -3,7 +3,7 @@ const bookSchema = require('../model/book-schema');
 
 const db = get();
 
-const bookCollection = db.createCollection("book", {
+const bookCollection = db.createCollection("books", {
     validator: {
         $jsonSchema:bookSchema
     }
